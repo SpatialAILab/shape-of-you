@@ -42,7 +42,7 @@
             <span class="author-block">
               <a href="https://sisung-liu-main.vercel.app">Sisung Liu</a><sup>2</sup>,</span>
             <span class="author-block">
-              Je Hyeong Hong<sup>1,2</sup>
+              <a href="https://scholar.google.com/citations?user=7axCcBkAAAAJ&hl=en">Je Hyeong Hong</a><sup>1,2</sup>
             </span>
           </div>
 
@@ -152,18 +152,17 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-full">
-        <h2 class="title is-3">Method Overview</h2>
-        <div class="content has-text-justified">
+        <h2 class="title is-3">Method</h2>
+        <img src="./static/images/paper/overview.png" alt="Pipeline overview" style="width:100%;">
+        <div class="content has-text-justified" style="margin-top: 1rem;">
           <p>
-            We compute an initial semantic match to identify high-confidence anchors. These anchors
-            are used to build a tractable, linear approximation of the otherwise quadratic
-            Gromov-Wasserstein (GW) geometric cost. The approximated geometric cost is fused with the
-            semantic cost, producing a final <i>fused cost matrix</i> that is solved as an
-            unbalanced optimal transport (UOT) problem. The resulting transport plan
-            &pi;<sup>(T)</sup> serves as a pseudo-label robust to geometric ambiguities.
+            <b>Overview of our pseudo-label generation pipeline.</b> High-confidence anchors from an
+            initial semantic match enable a tractable linear approximation of the otherwise
+            quadratic Gromov-Wasserstein geometric cost. Fusing this geometric cost with the semantic
+            cost yields a final cost matrix, solved via unbalanced optimal transport to produce a
+            transport plan that serves as a structurally consistent pseudo-label.
           </p>
         </div>
-        <img src="./static/images/paper/overview.png" alt="Pipeline overview" style="width:100%;">
       </div>
     </div>
   </div>
@@ -176,16 +175,8 @@
     <div class="columns is-centered has-text-centered">
       <div class="column is-full">
         <h2 class="title is-3">Qualitative Results on SPair-71k</h2>
-        <div class="content has-text-justified">
-          <p>
-            Comparison against DistillDIFT and SD-DINO on challenging cases including viewpoint
-            change, severe occlusion, extreme pose variation, large scale change, and background
-            clutter. From left to right: <b>Source</b>, <b>DistillDIFT</b>, <b>SD-DINO</b>,
-            <b>Ours</b>.
-          </p>
-        </div>
 
-        <div class="columns is-mobile is-gapless has-text-centered" style="font-weight:600;">
+        <div class="columns is-mobile is-gapless has-text-centered" style="font-weight:600; margin-top: 1rem;">
           <div class="column">Source</div>
           <div class="column">DistillDIFT</div>
           <div class="column">SD-DINO</div>
@@ -198,7 +189,6 @@
           <div class="column"><img src="./static/images/qualitative/sddino_1.jpg" alt="sddino 1"></div>
           <div class="column"><img src="./static/images/qualitative/ours_1.jpg" alt="ours 1"></div>
         </div>
-        <p class="has-text-centered is-size-7" style="margin-bottom:1rem;">(a) Viewpoint change, severe occlusion.</p>
 
         <div class="columns is-mobile is-gapless">
           <div class="column"><img src="./static/images/qualitative/source_2.jpg" alt="source 2"></div>
@@ -206,72 +196,12 @@
           <div class="column"><img src="./static/images/qualitative/sddino_2.jpg" alt="sddino 2"></div>
           <div class="column"><img src="./static/images/qualitative/ours_2.jpg" alt="ours 2"></div>
         </div>
-        <p class="has-text-centered is-size-7" style="margin-bottom:1rem;">(b) Extreme pose variation, self-occlusion.</p>
 
-        <div class="columns is-mobile is-gapless">
-          <div class="column"><img src="./static/images/qualitative/source_3.jpg" alt="source 3"></div>
-          <div class="column"><img src="./static/images/qualitative/distilldift_3.jpg" alt="distilldift 3"></div>
-          <div class="column"><img src="./static/images/qualitative/sddino_3.jpg" alt="sddino 3"></div>
-          <div class="column"><img src="./static/images/qualitative/ours_3.jpg" alt="ours 3"></div>
-        </div>
-        <p class="has-text-centered is-size-7" style="margin-bottom:1rem;">(c) Large scale change, textureless region.</p>
-
-        <div class="columns is-mobile is-gapless">
-          <div class="column"><img src="./static/images/qualitative/source_4.jpg" alt="source 4"></div>
-          <div class="column"><img src="./static/images/qualitative/distilldift_4.jpg" alt="distilldift 4"></div>
-          <div class="column"><img src="./static/images/qualitative/sddino_4.jpg" alt="sddino 4"></div>
-          <div class="column"><img src="./static/images/qualitative/ours_4.jpg" alt="ours 4"></div>
-        </div>
-        <p class="has-text-centered is-size-7" style="margin-bottom:1rem;">(d) Background clutter, semantic ambiguity.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- Pseudo-label generation -->
-<section class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-full">
-        <h2 class="title is-3">Pseudo-Label Generation Comparison</h2>
-        <div class="content has-text-justified">
-          <p>
-            Our Fused UOT formulation produces structurally consistent pseudo-labels that resolve
-            symmetry/repetition ambiguities, which Nearest-Neighbor (NN) matching cannot handle.
-          </p>
-        </div>
-
-        <div class="columns is-centered">
-          <div class="column has-text-centered">
-            <img src="./static/images/pseudo_label/nn.jpg" alt="Pseudo label: NN">
-            <p class="has-text-centered" style="margin-top:0.5rem;"><b>(a) Pseudo-label: NN</b></p>
-          </div>
-          <div class="column has-text-centered">
-            <img src="./static/images/pseudo_label/ours.jpg" alt="Pseudo label: Ours">
-            <p class="has-text-centered" style="margin-top:0.5rem;"><b>(b) Pseudo-label: Ours (Fused UOT)</b></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- Analysis -->
-<section class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Impact of the Gromov-Wasserstein Term</h2>
-        <div class="content has-text-justified">
-          <p>
-            Wasserstein baseline (blue) vs. Fused Gromov-Wasserstein (orange). Incorporating
-            geometric structural consistency yields consistent improvements (+2.3 ~ +7.0 %p) across
-            categories.
-          </p>
-        </div>
-        <img src="./static/images/paper/w_fgw.png" alt="W vs FGW comparison" style="width:100%;">
+        <p class="has-text-centered is-size-7" style="margin-top: 0.5rem;">
+          Comparison on challenging cases (viewpoint change, occlusion, pose variation).
+          <span class="dnerf">Shape-of-You</span> produces accurate matches where 2D-only baselines
+          confuse symmetric or repetitive parts.
+        </p>
       </div>
     </div>
   </div>
