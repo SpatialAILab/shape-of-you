@@ -45,13 +45,16 @@
             <span class="author-block">
               <a href="https://sisung-liu-main.vercel.app">Sisung Liu</a><sup>2</sup>,</span>
             <span class="author-block">
-              <a href="https://scholar.google.com/citations?user=7axCcBkAAAAJ&hl=en">Je Hyeong Hong</a><sup>1,2</sup>
+              <a href="https://scholar.google.com/citations?user=7axCcBkAAAAJ&hl=en">Je Hyeong Hong</a><sup>1,2,</sup><sup>&#9993;</sup>
             </span>
           </div>
 
           <div class="is-size-5 publication-authors">
             <span class="author-block"><sup>1</sup>Dept. Electronic Engineering, Hanyang University,</span>
             <span class="author-block"><sup>2</sup>Dept. Artificial Intelligence, Hanyang University</span>
+          </div>
+          <div class="is-size-6 publication-authors" style="margin-top: 0.3rem; color:#666;">
+            <span class="author-block"><sup>&#9993;</sup> Corresponding Author</span>
           </div>
 
           <div class="column has-text-centered">
@@ -167,6 +170,84 @@
             transport plan that serves as a structurally consistent pseudo-label.
           </p>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Quantitative results -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+        <h2 class="title is-3">Per-Category PCK@0.1 on SPair-71k</h2>
+        <div class="content has-text-justified">
+          <p style="margin-bottom: 0.5rem;">
+            <span class="dnerf">Shape-of-You</span> achieves the best average PCK@0.1 (67.9%),
+            outperforming the previous state of the art (DINOv2 + SD, 63.5%) by <b>+4.4%p</b>, with
+            consistent gains across nearly all 18 categories.
+            <b style="color:#c0392b;">Best</b> and <b style="color:#2980b9;">second-best</b> per
+            column are color-coded.
+          </p>
+        </div>
+        <div class="table-container" style="overflow-x:auto;">
+          <table class="table is-bordered is-narrow is-fullwidth has-text-centered" style="font-size: 0.78rem;">
+            <thead>
+              <tr>
+                <th class="has-text-left">Method</th>
+                <th><i class="fas fa-plane"></i></th>
+                <th><i class="fas fa-bicycle"></i></th>
+                <th><i class="fas fa-crow"></i></th>
+                <th><i class="fas fa-ship"></i></th>
+                <th><i class="fas fa-wine-bottle"></i></th>
+                <th><i class="fas fa-bus"></i></th>
+                <th><i class="fas fa-car"></i></th>
+                <th><i class="fas fa-cat"></i></th>
+                <th><i class="fas fa-chair"></i></th>
+                <th>cow</th>
+                <th><i class="fas fa-dog"></i></th>
+                <th><i class="fas fa-horse"></i></th>
+                <th><i class="fas fa-motorcycle"></i></th>
+                <th><i class="fas fa-walking"></i></th>
+                <th>plant</th>
+                <th>sheep</th>
+                <th><i class="fas fa-train"></i></th>
+                <th><i class="fas fa-tv"></i></th>
+                <th>avg &uarr;</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="has-text-left">ASIC</td>
+                <td>57.9</td><td>25.2</td><td>68.1</td><td>24.7</td><td>35.4</td><td>28.4</td><td>30.9</td><td>54.8</td><td>21.6</td><td>45.0</td><td>47.2</td><td>39.9</td><td>26.2</td><td>48.8</td><td>14.5</td><td>24.5</td><td>49.0</td><td>24.6</td><td>36.9</td>
+              </tr>
+              <tr>
+                <td class="has-text-left">DINOv2</td>
+                <td>72.7</td><td>62.4</td><td>85.2</td><td style="color:#c0392b;font-weight:700;">41.4</td><td>40.3</td><td>52.5</td><td style="color:#2980b9;font-weight:700;">51.5</td><td>71.3</td><td>36.1</td><td>67.2</td><td>65.0</td><td>67.6</td><td>61.1</td><td style="color:#2980b9;font-weight:700;">68.5</td><td>30.6</td><td>61.9</td><td>54.3</td><td>24.3</td><td>55.7</td>
+              </tr>
+              <tr>
+                <td class="has-text-left">DIFT</td>
+                <td>63.5</td><td>54.5</td><td>80.8</td><td>34.5</td><td>46.2</td><td>52.7</td><td>48.3</td><td>77.7</td><td>39.0</td><td>76.0</td><td>54.9</td><td>61.3</td><td>53.3</td><td>46.0</td><td style="color:#2980b9;font-weight:700;">57.8</td><td>57.1</td><td style="color:#c0392b;font-weight:700;">71.1</td><td style="color:#2980b9;font-weight:700;">63.4</td><td>57.7</td>
+              </tr>
+              <tr>
+                <td class="has-text-left">DistillDIFT&dagger;</td>
+                <td>70.3</td><td>55.4</td><td>85.9</td><td>36.8</td><td>51.9</td><td>51.7</td><td>50.5</td><td>78.0</td><td>40.5</td><td>73.8</td><td style="color:#2980b9;font-weight:700;">65.3</td><td>65.2</td><td>54.5</td><td>66.0</td><td>47.8</td><td>59.4</td><td>55.6</td><td>54.4</td><td>59.8</td>
+              </tr>
+              <tr>
+                <td class="has-text-left">DINOv2 + SD&dagger;</td>
+                <td style="color:#2980b9;font-weight:700;">72.9</td><td style="color:#2980b9;font-weight:700;">63.4</td><td style="color:#2980b9;font-weight:700;">86.4</td><td>40.5</td><td style="color:#2980b9;font-weight:700;">52.6</td><td style="color:#c0392b;font-weight:700;">55.4</td><td style="color:#c0392b;font-weight:700;">53.3</td><td style="color:#2980b9;font-weight:700;">78.4</td><td style="color:#2980b9;font-weight:700;">45.2</td><td style="color:#2980b9;font-weight:700;">77.1</td><td>64.7</td><td style="color:#2980b9;font-weight:700;">69.4</td><td style="color:#2980b9;font-weight:700;">62.9</td><td style="color:#2980b9;font-weight:700;">68.5</td><td>56.8</td><td style="color:#2980b9;font-weight:700;">67.0</td><td>65.9</td><td>51.8</td><td style="color:#2980b9;font-weight:700;">63.5</td>
+              </tr>
+              <tr style="background:#fff7e6;">
+                <td class="has-text-left"><b>Shape-of-You (Ours)</b></td>
+                <td style="color:#c0392b;font-weight:700;">73.5</td><td style="color:#c0392b;font-weight:700;">66.7</td><td style="color:#c0392b;font-weight:700;">89.9</td><td style="color:#2980b9;font-weight:700;">40.8</td><td style="color:#c0392b;font-weight:700;">58.0</td><td style="color:#c0392b;font-weight:700;">55.4</td><td>51.1</td><td style="color:#c0392b;font-weight:700;">84.8</td><td style="color:#c0392b;font-weight:700;">52.1</td><td style="color:#c0392b;font-weight:700;">81.0</td><td style="color:#c0392b;font-weight:700;">71.0</td><td style="color:#c0392b;font-weight:700;">75.3</td><td style="color:#c0392b;font-weight:700;">64.1</td><td style="color:#c0392b;font-weight:700;">71.8</td><td style="color:#c0392b;font-weight:700;">62.1</td><td style="color:#c0392b;font-weight:700;">70.2</td><td style="color:#2980b9;font-weight:700;">70.2</td><td style="color:#c0392b;font-weight:700;">64.4</td><td style="color:#c0392b;font-weight:700;">67.9</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="is-size-7" style="margin-top: 0.3rem; color:#666;">
+          &dagger; denotes results re-evaluated under identical standard evaluation settings.
+        </p>
       </div>
     </div>
   </div>
