@@ -18,6 +18,51 @@
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
+  <style>
+    .results-table {
+      border-collapse: collapse;
+      width: 100%;
+      font-size: 0.85rem;
+      font-variant-numeric: tabular-nums;
+      border-top: 2px solid #222;
+      border-bottom: 2px solid #222;
+    }
+    .results-table thead th {
+      border-bottom: 1.5px solid #222;
+      padding: 0.55rem 0.5rem;
+      text-align: center;
+      font-weight: 600;
+      background: #fafafa;
+      color: #333;
+    }
+    .results-table tbody td {
+      padding: 0.5rem 0.5rem;
+      text-align: center;
+      border: none;
+    }
+    .results-table tbody tr:not(:last-child) td {
+      border-bottom: 1px solid #eee;
+    }
+    .results-table .method-col { text-align: left; min-width: 9.5rem; }
+    .results-table .avg-col { border-left: 1.5px solid #ccc; }
+    .results-table tbody td:last-child { border-left: 1.5px solid #ccc; font-weight: 600; }
+    .results-table .ours-row {
+      background: #fff7e6;
+      border-top: 1.5px solid #d4a64a;
+      border-bottom: 1.5px solid #d4a64a;
+    }
+    .results-table .best { color: #c0392b; font-weight: 700; }
+    .results-table .second { color: #2980b9; font-weight: 700; }
+    .results-table .cat-icon {
+      height: 1.1rem;
+      width: auto;
+      vertical-align: -0.15em;
+    }
+    .results-table thead th .fas, .results-table thead th .fab {
+      font-size: 1rem;
+      color: #333;
+    }
+  </style>
   <link rel="icon" type="image/png" href="./static/images/favicon.png">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -192,10 +237,10 @@
           </p>
         </div>
         <div class="table-container" style="overflow-x:auto;">
-          <table class="table is-bordered is-narrow is-fullwidth has-text-centered" style="font-size: 0.78rem;">
+          <table class="results-table">
             <thead>
               <tr>
-                <th class="has-text-left">Method</th>
+                <th class="method-col">Method</th>
                 <th><i class="fas fa-plane"></i></th>
                 <th><i class="fas fa-bicycle"></i></th>
                 <th><i class="fas fa-crow"></i></th>
@@ -205,42 +250,42 @@
                 <th><i class="fas fa-car"></i></th>
                 <th><i class="fas fa-cat"></i></th>
                 <th><i class="fas fa-chair"></i></th>
-                <th>cow</th>
+                <th><img src="./static/images/icons/cow.png" alt="cow" class="cat-icon"></th>
                 <th><i class="fas fa-dog"></i></th>
                 <th><i class="fas fa-horse"></i></th>
                 <th><i class="fas fa-motorcycle"></i></th>
                 <th><i class="fas fa-walking"></i></th>
-                <th>plant</th>
-                <th>sheep</th>
+                <th><img src="./static/images/icons/plant.png" alt="plant" class="cat-icon"></th>
+                <th><img src="./static/images/icons/sheep.png" alt="sheep" class="cat-icon"></th>
                 <th><i class="fas fa-train"></i></th>
                 <th><i class="fas fa-tv"></i></th>
-                <th>avg &uarr;</th>
+                <th class="avg-col">avg &uarr;</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td class="has-text-left">ASIC</td>
+                <td class="method-col">ASIC</td>
                 <td>57.9</td><td>25.2</td><td>68.1</td><td>24.7</td><td>35.4</td><td>28.4</td><td>30.9</td><td>54.8</td><td>21.6</td><td>45.0</td><td>47.2</td><td>39.9</td><td>26.2</td><td>48.8</td><td>14.5</td><td>24.5</td><td>49.0</td><td>24.6</td><td>36.9</td>
               </tr>
               <tr>
-                <td class="has-text-left">DINOv2</td>
-                <td>72.7</td><td>62.4</td><td>85.2</td><td style="color:#c0392b;font-weight:700;">41.4</td><td>40.3</td><td>52.5</td><td style="color:#2980b9;font-weight:700;">51.5</td><td>71.3</td><td>36.1</td><td>67.2</td><td>65.0</td><td>67.6</td><td>61.1</td><td style="color:#2980b9;font-weight:700;">68.5</td><td>30.6</td><td>61.9</td><td>54.3</td><td>24.3</td><td>55.7</td>
+                <td class="method-col">DINOv2</td>
+                <td>72.7</td><td>62.4</td><td>85.2</td><td class="best">41.4</td><td>40.3</td><td>52.5</td><td class="second">51.5</td><td>71.3</td><td>36.1</td><td>67.2</td><td>65.0</td><td>67.6</td><td>61.1</td><td class="second">68.5</td><td>30.6</td><td>61.9</td><td>54.3</td><td>24.3</td><td>55.7</td>
               </tr>
               <tr>
-                <td class="has-text-left">DIFT</td>
-                <td>63.5</td><td>54.5</td><td>80.8</td><td>34.5</td><td>46.2</td><td>52.7</td><td>48.3</td><td>77.7</td><td>39.0</td><td>76.0</td><td>54.9</td><td>61.3</td><td>53.3</td><td>46.0</td><td style="color:#2980b9;font-weight:700;">57.8</td><td>57.1</td><td style="color:#c0392b;font-weight:700;">71.1</td><td style="color:#2980b9;font-weight:700;">63.4</td><td>57.7</td>
+                <td class="method-col">DIFT</td>
+                <td>63.5</td><td>54.5</td><td>80.8</td><td>34.5</td><td>46.2</td><td>52.7</td><td>48.3</td><td>77.7</td><td>39.0</td><td>76.0</td><td>54.9</td><td>61.3</td><td>53.3</td><td>46.0</td><td class="second">57.8</td><td>57.1</td><td class="best">71.1</td><td class="second">63.4</td><td>57.7</td>
               </tr>
               <tr>
-                <td class="has-text-left">DistillDIFT&dagger;</td>
-                <td>70.3</td><td>55.4</td><td>85.9</td><td>36.8</td><td>51.9</td><td>51.7</td><td>50.5</td><td>78.0</td><td>40.5</td><td>73.8</td><td style="color:#2980b9;font-weight:700;">65.3</td><td>65.2</td><td>54.5</td><td>66.0</td><td>47.8</td><td>59.4</td><td>55.6</td><td>54.4</td><td>59.8</td>
+                <td class="method-col">DistillDIFT&dagger;</td>
+                <td>70.3</td><td>55.4</td><td>85.9</td><td>36.8</td><td>51.9</td><td>51.7</td><td>50.5</td><td>78.0</td><td>40.5</td><td>73.8</td><td class="second">65.3</td><td>65.2</td><td>54.5</td><td>66.0</td><td>47.8</td><td>59.4</td><td>55.6</td><td>54.4</td><td>59.8</td>
               </tr>
               <tr>
-                <td class="has-text-left">DINOv2 + SD&dagger;</td>
-                <td style="color:#2980b9;font-weight:700;">72.9</td><td style="color:#2980b9;font-weight:700;">63.4</td><td style="color:#2980b9;font-weight:700;">86.4</td><td>40.5</td><td style="color:#2980b9;font-weight:700;">52.6</td><td style="color:#c0392b;font-weight:700;">55.4</td><td style="color:#c0392b;font-weight:700;">53.3</td><td style="color:#2980b9;font-weight:700;">78.4</td><td style="color:#2980b9;font-weight:700;">45.2</td><td style="color:#2980b9;font-weight:700;">77.1</td><td>64.7</td><td style="color:#2980b9;font-weight:700;">69.4</td><td style="color:#2980b9;font-weight:700;">62.9</td><td style="color:#2980b9;font-weight:700;">68.5</td><td>56.8</td><td style="color:#2980b9;font-weight:700;">67.0</td><td>65.9</td><td>51.8</td><td style="color:#2980b9;font-weight:700;">63.5</td>
+                <td class="method-col">DINOv2 + SD&dagger;</td>
+                <td class="second">72.9</td><td class="second">63.4</td><td class="second">86.4</td><td>40.5</td><td class="second">52.6</td><td class="best">55.4</td><td class="best">53.3</td><td class="second">78.4</td><td class="second">45.2</td><td class="second">77.1</td><td>64.7</td><td class="second">69.4</td><td class="second">62.9</td><td class="second">68.5</td><td>56.8</td><td class="second">67.0</td><td>65.9</td><td>51.8</td><td class="second">63.5</td>
               </tr>
-              <tr style="background:#fff7e6;">
-                <td class="has-text-left"><b>Shape-of-You (Ours)</b></td>
-                <td style="color:#c0392b;font-weight:700;">73.5</td><td style="color:#c0392b;font-weight:700;">66.7</td><td style="color:#c0392b;font-weight:700;">89.9</td><td style="color:#2980b9;font-weight:700;">40.8</td><td style="color:#c0392b;font-weight:700;">58.0</td><td style="color:#c0392b;font-weight:700;">55.4</td><td>51.1</td><td style="color:#c0392b;font-weight:700;">84.8</td><td style="color:#c0392b;font-weight:700;">52.1</td><td style="color:#c0392b;font-weight:700;">81.0</td><td style="color:#c0392b;font-weight:700;">71.0</td><td style="color:#c0392b;font-weight:700;">75.3</td><td style="color:#c0392b;font-weight:700;">64.1</td><td style="color:#c0392b;font-weight:700;">71.8</td><td style="color:#c0392b;font-weight:700;">62.1</td><td style="color:#c0392b;font-weight:700;">70.2</td><td style="color:#2980b9;font-weight:700;">70.2</td><td style="color:#c0392b;font-weight:700;">64.4</td><td style="color:#c0392b;font-weight:700;">67.9</td>
+              <tr class="ours-row">
+                <td class="method-col"><b>Shape-of-You (Ours)</b></td>
+                <td class="best">73.5</td><td class="best">66.7</td><td class="best">89.9</td><td class="second">40.8</td><td class="best">58.0</td><td class="best">55.4</td><td>51.1</td><td class="best">84.8</td><td class="best">52.1</td><td class="best">81.0</td><td class="best">71.0</td><td class="best">75.3</td><td class="best">64.1</td><td class="best">71.8</td><td class="best">62.1</td><td class="best">70.2</td><td class="second">70.2</td><td class="best">64.4</td><td class="best">67.9</td>
               </tr>
             </tbody>
           </table>
